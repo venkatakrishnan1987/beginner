@@ -61,3 +61,18 @@ elif score >= 60 or submitted_project:
 else:
     print("F")
 
+
+
+score = 50
+submitted_project = True
+
+if score >= 90:
+    print("High Score")
+else:
+    print("Low Score")
+
+if submitted_project0:
+    print("Project is submitted")
+else:
+    print("Project is not submitted")
+
