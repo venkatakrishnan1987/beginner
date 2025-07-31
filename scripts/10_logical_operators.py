@@ -59,3 +59,47 @@ Python Challenges
 3. Check if a user’s email is not empty, contains '@', and ends with '.com'
 4. Check if a username is a string, is not None, and is longer than 5 characters
 5. Check if the user is either an admin or a moderator, and either they’re not banned or they’ve verified their email
+
+
+
+# IS IN
+print("f" not in "python")
+print(3 not in [1, 2, 3])
+
+# Security check: ensure the domain is not banned
+domain = "spam.com"
+banned_domains = ["spam.com", "fake.org", "bot.net"]
+print(domain not in banned_domains)
+
+
+x = ['a', 'b', 'c']
+y = ['a', 'b', 'c']
+
+print(x == y)  # True: same content
+print(x is y)  # False: different objects
+
+x = 10
+y = 10
+
+print(x == y)  # True: same value
+print(x is y)  # True: same object (small integers are interned in Python)
+
+
+x = ['a', 'b', 'c']
+y = x
+
+print(x == y)  # True: values are the same
+print(x is y)  # True: both variables point to the same object in memory
+
+
+# Make sure the email exists, and it’s not empty.
+
+email = "b@gmail.com"
+print(email != "")
+
+email = None
+print(email is not None and email != "")
+
+
+
+
