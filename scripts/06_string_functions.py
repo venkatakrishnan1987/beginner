@@ -1,180 +1,195 @@
-# Types
+# ================================================================================
+# STRING FUNCTIONS & OPERATIONS
+# ----------------------------------------
+# Strings are one of the most used data types in Python.
+# This section covers type conversion, transformations, formatting,
+# indexing, slicing, cleanup, and search operations on strings.
+# ================================================================================
+
+# ---------------------------------------
+# Type Conversion: Numbers to Strings
+# ---------------------------------------
 name = "Baraa"
-print(type(name))
+print(type(name))  # <class 'str'>
 
 age = 24
-print(type(age))
-print("Your Age is:" + str(age))
+print(type(age))   # <class 'int'>
+print("Your Age is: " + str(age))  # Must convert int to str for concatenation
 
-age = age + 5       # age becomes 29 (int)
-age = str(age)      # age is now "29" (str)
-print(type(age))    # will print <class 'str'>
+age = age + 5       # 29 (int)
+age = str(age)      # Convert to string
+print(type(age))    # <class 'str'>
 
-age = age + 5       # ❌ ERROR! Cannot add int to str
+# age = age + 5     # Error: Cannot add int to str
 
-
-# Math
+# ---------------------------------------
+# String Length
+# ---------------------------------------
 password = "123a58478as"
-print(len(password))
+print(len(password))  # 11
 
 if len(password) < 8:
     print("Your Password is too short!")
 
-
-# Math
+# ---------------------------------------
+# Counting Substrings
+# ---------------------------------------
 text = """
 Python is easy to learn.
 Python is powerful$.
 Many people love python.
 """
 
-print(text.count("Python"))
-print(text.count("python"))
-print(text.count("$"))
+print(text.count("Python"))  # 2 (case-sensitive)
+print(text.count("python"))  # 1
+print(text.count("$"))       # 1
 
-# Transformations
-
-# Transformations
+# ---------------------------------------
+# Replacing Characters
+# ---------------------------------------
 price = "1234,56"
-print(price.replace(",", "."))
+print(price.replace(",", "."))  # 1234.56
 
 phone = "176-1234-56"
-print(phone.replace("-", "/"))
-print(phone.replace("-", ""))
-
-Convert the messy phone number into a clean number format with only digits
-"+49 (176) 123-4567"
-00491761234567
+print(phone.replace("-", "/"))   # 176/1234/56
+print(phone.replace("-", ""))    # 176123456
 
 
+# ---------------------------------------
+# Phone Number Cleanup Challenge
+# ---------------------------------------
+# Convert the messy phone number into a clean number format with only digits:
+# Input: "+49 (176) 123-4567"
+# Output: "00491761234567"
 
-# Transformations
+raw_number = "+49 (176) 123-4567"
+clean_number = raw_number.replace("+49", "0049").replace("(", "").replace(")", "").replace("-", "").replace(" ", "")
+print(clean_number)  # 00491761234567
+
+
+# ---------------------------------------
+# Combining Strings
+# ---------------------------------------
 first_name = "Michael"
 last_name = "Scott"
-last_name = first_name + "-" + last_name
-print(last_name)
+full_name = first_name + "-" + last_name
+print(full_name)  # Michael-Scott
 
-# Transformations
 folder = "C:/Users/Baraa/"
 file = "report.csv"
 full_file_path = folder + file
-print(full_file_path)
+print(full_file_path)  # C:/Users/Baraa/report.csv
 
 
+# ---------------------------------------
+# String Formatting
+# ---------------------------------------
 name = "Sam"
 age = 34
 is_student = False
 
-# Method 1: Using string concatenation + str()
+# Method 1: String Concatenation
 print("My name is " + name + ", I am " + str(age) + " years old, and student status is " + str(is_student) + ".")
 
-# Method 2: Using an f-string (cleaner and recommended)
+# Method 2: f-Strings (Recommended)
 print(f"My name is {name}, I am {age} years old, and student status is {is_student}.")
 
-print(f"2 + 3 = {2 + 3}")        # Evaluates the expression: Output → 2 + 3 = 5
-print(f"{{This is me}}")         # Prints literal curly braces: Output → {This is me}
+# f-String Expression and Escape Example
+print(f"2 + 3 = {2 + 3}")      # ➜ 2 + 3 = 5
+print(f"{{This is me}}")       # ➜ {This is me}
 
-# Transformations
+# ---------------------------------------
+# Splitting Strings
+# ---------------------------------------
 stamp = "2026-09-20 14:30"
-print(stamp.split(" "))
+print(stamp.split(" "))  # ['2026-09-20', '14:30']
 
-# Transformations
 csv_file = "1234,Max,USA,1970-10-05,M"
-print(csv_file.split(", "))
+print(csv_file.split(","))  # ['1234', 'Max', 'USA', '1970-10-05', 'M']
 
-# Transformations
-print("ha" * 3)
-print("======================")
+# ---------------------------------------
+# Repeating Strings
+# ---------------------------------------
+print("ha" * 3)              # hahaha
+print("=" * 30)              # ==============================
 
-print("=" * 30)
-
-
-# Indexes & Slicing
+# ---------------------------------------
+# Indexing and Slicing
+# ---------------------------------------
 text = "Python"
 
-# Extract the first character
-print(text[0])     # P
-print(text[-6])    # P
+print(text[0])    # P (first character)
+print(text[-6])   # P (same as above)
+print(text[5])    # n (last character)
+print(text[-1])   # n
+print(text[3])    # h
 
-# Extract the last character
-print(text[5])     # n
-print(text[-1])    # n
-
-# Extract 'h'
-print(text[3])     # h
-
-# Indexes & Slicing
 date = "2026-09-20"
-
-# Extract the Year
-print(date[0:4])   # 2026
-print(date[:4])    # 2026
-
-# Extract the Month
-print(date[5:7])   # 09
-
-# Extract the Day
-print(date[8:])    # 20
-print(date[-2:])   # 20
+print(date[0:4])  # 2026 (year)
+print(date[:4])   # 2026
+print(date[5:7])  # 09 (month)
+print(date[8:])   # 20 (day)
+print(date[-2:])  # 20
 
 
+# ---------------------------------------
 # Whitespace Cleanup
+# ---------------------------------------
 text = " Engineering".lstrip()
-print(text)
+print(text)  # "Engineering"
 
 text = "Engineering ".rstrip()
-print(text)
+print(text)  # "Engineering"
 
 text = "  Engineering ".strip()
-print(text)
+print(text)  # "Engineering"
 
 text = "Data Engineering".strip()
-print(text)
+print(text)  # "Data Engineering"
 
 text = "###Abc###".strip("#")
-print(text)
+print(text)  # "Abc"
 
-# Case Conversions
+
+# ---------------------------------------
+# Case Conversion
+# ---------------------------------------
 text = "python PROGRAMMING"
-print(text.lower())   # Converts all to lowercase
-print(text.upper())   # Converts all to uppercase
+print(text.lower())  # python programming
+print(text.upper())  # PYTHON PROGRAMMING
 
-# Case Conversions
 search = "Email ".lower().strip()
 data = " emAil".lower().strip()
+print(search == data)  # True
 
-print(search == data)
+
+# ---------------------------------------
+# String Cleanup Challenge
+# ---------------------------------------
+# Input:  "968-Maria, ( D@ta Engineer );; 27y"
+# Goal:   name: maria | role: data engineer | age: 27
 
 
-Turn the messy string into a single clean summary with name, role, and age
-"968-Maria, ( D@ta Engineer );; 27y"
-Clean the string!
-name: maria | role: data engineer | age: 27
-
-# Search
+# ---------------------------------------
+# Search Functions
+# ---------------------------------------
 phone = "+48-176-12345"
-print(phone.startswith("+49"))
+print(phone.startswith("+49"))         # False
 
 email = "baraa@outlook.com"
-print(email.endswith("gmail.com"))
+print(email.endswith("gmail.com"))     # False
 
 file = "data_backup.csv"
-print(file.endswith(".csv"))
+print(file.endswith(".csv"))           # True
 
-# Search
-phone = "+48-176-12345"
-print(phone.startswith("+49"))          # False
-
-email = "baraa@outlook.com"
-print(email.endswith("gmail.com"))      # False
-
-print("@" in email)                     # True
+print("@" in email)                    # True
 
 url = "https://api.company.com/v1/data"
-print("/api" in url)                    # True
+print("/api" in url)                   # True
 
-
-# Search
+# ---------------------------------------
+# Partial Extraction Using find()
+# ---------------------------------------
 phone1 = "+48-176-12345"
 phone2 = "48-654-16548"
 phone3 = "0048-654-16548"
@@ -182,10 +197,4 @@ phone3 = "0048-654-16548"
 print(phone1[phone1.find("-") + 1:])  # 176-12345
 print(phone2[phone2.find("-") + 1:])  # 654-16548
 print(phone3[phone3.find("-") + 1:])  # 654-16548
-
 print(phone1.find("-"))              # 3
-
-
-
-
-
