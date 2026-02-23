@@ -17,6 +17,6 @@
 # ---------------------------------------
 
 # Store the final exam score
-x = 20
+x = 10
 
 x = 9  # Final exam score
