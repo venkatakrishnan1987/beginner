@@ -1,0 +1,26 @@
+how to clone a repo and push the contents from local to other repos
+
+Here’s a clear DevOps-friendly step-by-step guide to:
+
+✅ Clone an existing repo
+
+✅ Push the same contents to another repository
+
+✅ Scenario
+
+You have:
+
+Source Repo → Repo-A
+
+Target Repo → Repo-B
+
+Goal → Move / push code from Repo-A to Repo-B
+git remote add new-origin https://github.com/venkatakrishnan1987/beginner.git
+git config --global credential.helper manager-core
+git pull new-origin main --allow-unrelated-histories
+git add .
+git commit -m "Merged remote changes"
+git push new-origin main
+git remote remove origin
+git remote rename new-origin origin
+git remote -v
